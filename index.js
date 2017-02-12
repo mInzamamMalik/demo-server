@@ -2,23 +2,22 @@ var express = require("express");
 var mongoose = require("mongoose")
 var cors = require('cors');
 
-//var autocomplete = require("./api/autocomplete/index");
+var autocomplete = require("./api/autocomplete/index");
 
 
 var app = express();
 var port = process.env.PORT || 3000;
 app.use(cors());
 
-// app.use("/autocomplete", autocomplete);
+app.use("/autocomplete", autocomplete);
+
 app.use("/", (req, res, next) => {
     res.json({ "success": "Server is up and running" })
 });
 
-
 app.listen(port, function () {
     console.log('listening at: ' + port);
 });
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 let dbURI = "mongodb://malikasinger:pakistan@ds149049.mlab.com:49049/malikasinger-demo";

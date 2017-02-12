@@ -4,9 +4,8 @@ var cors = require('cors');
 
 var autocomplete = require("./api/autocomplete/index");
 
-
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 app.use(cors());
 
 app.use("/autocomplete", autocomplete);
@@ -24,7 +23,6 @@ let dbURI = "mongodb://malikasinger:pakistan@ds149049.mlab.com:49049/malikasinge
 // let dbURI = 'mongodb://localhost/mydatabase';
 mongoose.connect(dbURI);
 
-
 ////////////////mongodb connected disconnected events///////////////////////////////////////////////
 mongoose.connection.on('connected', function () {//connected
     console.log("Mongoose is connected");
@@ -34,7 +32,7 @@ mongoose.connection.on('connected', function () {//connected
 mongoose.connection.on('disconnected', function () {//disconnected
     console.log("Mongoose is disconnected");
     process.exit(1);
-});
+}); 
 
 mongoose.connection.on('error', function (err) {//any error
     console.log('Mongoose connection error: ', err);
